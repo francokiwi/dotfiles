@@ -1,0 +1,52 @@
+[bar/bar1]
+# Set position and shape
+radius = 10
+offset-y = 10
+offset-x = 20
+padding-left = 2
+padding-right = 2
+width = 98%
+margin-bottom = 5
+fixed-center = true
+
+#Fix i3
+wm-restack = i3
+override-redirect = true
+
+#Set colours
+background = #575268
+foreground = #D9E0EE
+
+line-size = 3
+modules-left = date
+modules-right = battery
+
+[module/date]
+type = internal/date
+interval = 1
+
+time = %I:%M %p
+date-alt = %A,	%B %e
+label = %time% %date%
+
+[module/battery]
+type = internal/battery
+
+; This is useful in case the battery never reports 100% charge
+full-at = 99
+
+; Use the following command to list batteries and adapters:
+; $ ls -1 /sys/class/power_supply/
+battery = BAT1
+adapter = ACAD
+
+; If an inotify event haven't been reported in this many
+; seconds, manually poll for new values.
+;
+; Needed as a fallback for systems that don't report events
+; on sysfs/procfs.
+;
+; Disable polling by setting the interval to 0.
+;
+; Default: 5
+poll-interval = 5

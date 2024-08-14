@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "cssmodules-language-server": "^1.2.1",
+    "pyright": "^1.1.226"
+  }
+}
