@@ -50,8 +50,10 @@ require("telescope").setup{
 	}
 }
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', 'f', builtin.find_files, {})
-vim.keymap.set('n', 'b', builtin.buffers, {})
+vim.g.mapleader = ";"
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fg', builtin.git_files, {})
 
 
 -- Config cmp
@@ -152,3 +154,4 @@ vim.keymap.set("n", "<leader>rb", ":Refactor extract_block <CR>")
 
 -- Other
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
+require("mason").setup()

@@ -6,7 +6,7 @@ return{
 	"nvim-tree/nvim-web-devicons",
 	"nvim-lua/plenary.nvim",
 	"nvim-telescope/telescope.nvim",
-	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate"},
+	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate", config = function() vim.cmd([[:TSEnable highlight]]) end},
 	{"windwp/nvim-autopairs", event = "InsertEnter", config=true},
 	"neovim/nvim-lspconfig",
 	"hrsh7th/cmp-nvim-lsp",
@@ -21,4 +21,7 @@ return{
 	"dcampos/cmp-emmet-vim",
 	"ThePrimeagen/refactoring.nvim",
 	"mbbill/undotree",
+	"luk400/vim-jukit",
+	{"github/copilot.vim", config = function() vim.cmd([[:Copilot disable]]) end},
+	"williamboman/mason.nvim",
 }
