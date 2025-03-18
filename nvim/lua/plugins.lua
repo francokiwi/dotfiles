@@ -24,4 +24,9 @@ return{
 	"luk400/vim-jukit",
 	{"github/copilot.vim", config = function() vim.cmd([[:Copilot disable]]) end},
 	"williamboman/mason.nvim",
+	"williamboman/mason-lspconfig.nvim",
+	"inkarkat/vim-ReplaceWithRegister",
+	"inkarkat/vim-ReplaceWithSameIndentRegister",
+	"elihunter173/dirbuf.nvim",
+	{'bennypowers/splitjoin.nvim',lazy = true,keys = {{ 'gj', function() require'splitjoin'.join() end, desc = 'Join the object under cursor' },{ 'g,', function() require'splitjoin'.split() end, desc = 'Split the object under cursor' },},}
 }

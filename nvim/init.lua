@@ -19,6 +19,7 @@ vim.keymap.set('n', '<Down>', '')
 vim.keymap.set("n", "<leader>p", '"+p')
 vim.keymap.set({"n", "v"}, "<leader>y", '"+y')
 vim.keymap.set("n", "<leader>Y", '"+Y')
+vim.keymap.set("t", "<Esc>", "<C-\\><C-n>")
 
 -- Setup lazy
 require("config.lazy")
@@ -47,6 +48,15 @@ vim.o.scrolloff = 8
 require("telescope").setup{
 	defaults = {
 		initial_mode = "normal"
+	},
+	pickers = {
+		buffers = {
+			mappings = {
+				n = {
+					["d"] = "delete_buffer"
+				}
+			}
+		}
 	}
 }
 local builtin = require('telescope.builtin')
@@ -98,9 +108,23 @@ cmp.setup.cmdline(':', {
 })
 
 -- Setup lsp
+require("mason").setup()
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
 local lspconfig = require("lspconfig")
-lspconfig.pyright.setup {
+lspconfig.pylsp.setup {
+	on_attach = custom_attach,
+	settings = {
+    pylsp = {
+    plugins = {
+        -- formatter options
+        black = { enabled = true },
+        -- type checker
+        pylsp_mypy = { enabled = true },
+        -- auto-completion options
+        jedi_completion = { fuzzy = true },
+    },
+    },
+},
 	capabilities = capabilities
 }
 lspconfig.quick_lint_js.setup {
@@ -118,6 +142,23 @@ lspconfig.csharp_ls.setup {
 lspconfig.gdscript.setup {
 	capabilities = capabilities
 }
+lspconfig.solidity.setup {
+	capabilities = capabilities
+}
+lspconfig.angularls.setup {
+	capabilities = capabilities
+}
+lspconfig.ts_ls.setup {
+	capabilities = capabilities
+}
+lspconfig.buf_ls.setup {
+	capabilities = capabilities
+}
+require("mason").setup()
+vim.keymap.set("n", "gD", function() vim.lsp.buf.declaration() end)
+vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end)
+vim.keymap.set("n", "gn", function() vim.diagnostic.goto_next() end)
+vim.keymap.set("n", "gN", function() vim.diagnostic.goto_prev() end)
 
 -- Setup dap
 local dap = require('dap')
@@ -154,4 +195,4 @@ vim.keymap.set("n", "<leader>rb", ":Refactor extract_block <CR>")
 
 -- Other
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-require("mason").setup()
+vim.keymap.set("n", "<leader><cr>", ":call jukit#send#line()<cr>")
