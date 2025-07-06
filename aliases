@@ -1,0 +1,4 @@
+alias ghc='ghc -dynamic'
+alias ghci='ghci -dynamic'
+alias tm='tmux new -A'
+alias aliases='$EDITOR $HOME/.config/aliases'

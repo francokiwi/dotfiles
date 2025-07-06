@@ -196,3 +196,7 @@ vim.keymap.set("n", "<leader>rb", ":Refactor extract_block <CR>")
 -- Other
 vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 vim.keymap.set("n", "<leader><cr>", ":call jukit#send#line()<cr>")
+vim.g.jukit_terminal = "tmux"
+-- local markdown = require('render-markdown')
+-- markdown.enable()
+-- vim.keymap.set("n", "<leader>md", markdown.toggle())

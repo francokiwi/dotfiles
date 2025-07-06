@@ -1,13 +1,31 @@
 return{
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
+	{
+	  "catppuccin/nvim",
+	  name = "catppuccin",
+	  priority = 1000,
+	},
 	"tpope/vim-repeat",
 	"ggandor/lightspeed.nvim",
 	"itchyny/lightline.vim",
 	"nvim-tree/nvim-web-devicons",
 	"nvim-lua/plenary.nvim",
 	"nvim-telescope/telescope.nvim",
-	{"nvim-treesitter/nvim-treesitter", build = ":TSUpdate", config = function() vim.cmd([[:TSEnable highlight]]) end},
-	{"windwp/nvim-autopairs", event = "InsertEnter", config=true},
+	{
+	  "nvim-treesitter/nvim-treesitter",
+	  build = ":TSUpdate",
+	  config = function() vim.cmd([[:TSEnable highlight]]) end,
+	},
+	{
+	  'rachartier/tiny-inline-diagnostic.nvim',
+	  event = "LspAttach",
+	  priority = 1000,
+	  config = function() require('tiny-inline-diagnostic').setup() vim.diagnostic.config({virtual_text = false}) end,
+	},
+	{
+	  "windwp/nvim-autopairs",
+	  event = "InsertEnter",
+	  config=true,
+	},
 	"neovim/nvim-lspconfig",
 	"hrsh7th/cmp-nvim-lsp",
 	"hrsh7th/cmp-buffer",
@@ -22,11 +40,21 @@ return{
 	"ThePrimeagen/refactoring.nvim",
 	"mbbill/undotree",
 	"luk400/vim-jukit",
-	{"github/copilot.vim", config = function() vim.cmd([[:Copilot disable]]) end},
+	{
+	  "github/copilot.vim",
+	  config = function() vim.cmd([[:Copilot disable]]) end,
+	},
 	"williamboman/mason.nvim",
 	"williamboman/mason-lspconfig.nvim",
 	"inkarkat/vim-ReplaceWithRegister",
 	"inkarkat/vim-ReplaceWithSameIndentRegister",
 	"elihunter173/dirbuf.nvim",
-	{'bennypowers/splitjoin.nvim',lazy = true,keys = {{ 'gj', function() require'splitjoin'.join() end, desc = 'Join the object under cursor' },{ 'g,', function() require'splitjoin'.split() end, desc = 'Split the object under cursor' },},}
+	{'bennypowers/splitjoin.nvim',lazy = true,keys = {
+	  { 'gj', function() require'splitjoin'.join() end, desc = 'Join the object under cursor' },
+	  { 'g,', function() require'splitjoin'.split() end, desc = 'Split the object under cursor' },
+	},},
+	{
+	  'MeanderingProgrammer/render-markdown.nvim',
+	  dependencies = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+	},
 }

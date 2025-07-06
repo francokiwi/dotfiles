@@ -230,8 +230,8 @@ mode "locale" {
 	bindsym Escape mode "default"
 }
 bindsym $mod+y mode "locale"
-exec_always --no-startup-id xinput set-prop "MSFT0003:00 06CB:CE2D Touchpad" 368 0 
-exec_always --no-startup-id xinput set-prop "MSFT0003:00 06CB:CE2D Touchpad" 360 1
+exec_always --no-startup-id xinput set-prop "MSFT0003:00 06CB:CE2D Touchpad" 371 0 
+exec_always --no-startup-id xinput set-prop "MSFT0003:00 06CB:CE2D Touchpad" 363 1
 bindsym $mod+Shift+s exec --no-startup-id shutter -s
 bindsym $mod+i exec --no-startup-id rofi-bluetooth
 
@@ -239,3 +239,5 @@ bindsym $mod+i exec --no-startup-id rofi-bluetooth
 
 bindsym $mod+Shift+minus move scratchpad
 bindsym $mod+minus scratchpad show
+
+for_window [class="Matplotlib" instance="matplotlib"] floating enable
