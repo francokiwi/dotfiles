@@ -1,4 +1,12 @@
 alias ghc='ghc -dynamic'
 alias ghci='ghci -dynamic'
-alias tm='tmux new -A'
 alias aliases='$EDITOR $HOME/.config/aliases'
+
+tm() {
+	if [ -z "$1" ]
+	then
+		tmux new -A
+	else
+		tmux new -As "$1"
+	fi
+}
